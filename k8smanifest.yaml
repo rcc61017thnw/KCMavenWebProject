@@ -2,32 +2,32 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    name: pragimtech
-  name: pragimtech
+    name: rcc
+  name: rcc
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: pragimtech
+        name: rcc
     spec:
       containers:
-      - image: pragimtech:1.0
-        name: pragimtech
+      - image: 172.26.1.182:8082/c2m_sbx:2.0
+        name: rcc
         ports:
-        - name: pragimtech
+        - name: rcc
           containerPort: 8080      
 ---
 # Node Port Service
 apiVersion: v1
 kind: Service
 metadata:
-  name: pragimtech
+  name: rcc
   labels:
-    app: pragimtech
+    app: rcc
 spec:
   selector:
-    app: pragimtech
+    app: rcc
   type: NodePort
   ports:
   - nodePort: 31000
