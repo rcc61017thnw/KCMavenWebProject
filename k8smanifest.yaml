@@ -16,7 +16,9 @@ spec:
         name: rcc
         ports:
         - name: rcc
-          containerPort: 8080      
+          containerPort: 8080
+      imagePullSecrets:
+      - name: regcred
 ---
 # Node Port Service
 apiVersion: v1
@@ -24,13 +26,12 @@ kind: Service
 metadata:
   name: rcc
   labels:
-    app: rcc
+    name: rcc
 spec:
   selector:
-    app: rcc
+    name: rcc
   type: NodePort
   ports:
-  - nodePort: 31000
+  - nodePort: 32000
     port: 8080
     targetPort: 8080
-
