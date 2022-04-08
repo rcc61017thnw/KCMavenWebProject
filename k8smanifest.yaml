@@ -12,7 +12,7 @@ spec:
         name: rcc
     spec:
       containers:
-      - image: 172.26.1.182:8082/c2m_sbx:${BUILD_NUMBER}
+      - image: 172.26.1.182:8082/c2m_sbx:${env.BUILD_NUMBER}
         name: rcc
         ports:
         - name: rcc
